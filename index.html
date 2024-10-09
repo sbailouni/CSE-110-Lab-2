@@ -79,7 +79,39 @@
                                    <p>Content: ${content}<p>
                                    <p>Label: ${label}<p>`;
         });
+
+        // Title input field: check if character length exceeds 50
+
+        document.getElementById("title").addEventListener("input", function () {
+
+            const title = this.value;
+
+            if (title.length > 50) {
+
+                alert("Title cannot exceed 50 characters.");
+
+                }
+        });
+
+        document.getElementById("title").addEventListener("focus", function () {
+           this.style.backgroundColor = "#e0f7fa";  // Light blue background on focus
+        });
+
+        document.getElementById("title").addEventListener("blur", function () {
+           this.style.backgroundColor = "";  // Reset background on blur
+        });
+
+        document.getElementById("content").addEventListener("focus", function () {
+           this.style.backgroundColor = "#e0f7fa";  // Light blue background on focus
+        });
+
+        document.getElementById("content").addEventListener("blur", function () {
+           this.style.backgroundColor = "";  // Reset background on blur
+        });
+
     </script>
+
+
 </body>
 
 </html>
