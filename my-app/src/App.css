@@ -1,21 +1,21 @@
 .note-individual {
-  display: "flex";
+  display: flex;
   flex-direction: column;
 }
  
 .app-container {
-  display: "flex";
+  display: flex;
   flex-direction: column;
 }
 
 .note-form {
-  display: "flex";
+  display: flex;
   flex-direction: column;
 }
 
 body {
   margin: 20px;
-  background-color: lightgrey;
+  background-color: inherit;
 }
  
 .app-container {
@@ -59,6 +59,7 @@ body {
   border: none;
   cursor: pointer;
   max-width: fit-content;
+  color: inherit;
 }
  
 h2 {
@@ -107,3 +108,13 @@ input {
   background-color: rgb(220, 89, 89);
   color: white;
 } 
+
+.toggle-button {
+  margin: 20px;
+  padding: 10px;
+  border: none;
+}
+
+.toggle-button:hover {
+  background-color: #a7a7a7; /* Darken on hover */
+}
