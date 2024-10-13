@@ -118,3 +118,8 @@ input {
 .toggle-button:hover {
   background-color: #a7a7a7; /* Darken on hover */
 }
+
+.edit-button {
+  margin-top: 50px;
+  font-size: 15px; 
+}
