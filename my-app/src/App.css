@@ -123,3 +123,7 @@ input {
   margin-top: 50px;
   font-size: 15px; 
 }
+
+.App-body{
+  text-align: center;
+}
