@@ -116,7 +116,7 @@ input {
 }
 
 .toggle-button:hover {
-  background-color: #a7a7a7; /* Darken on hover */
+  background-color: #a7a7a7;
 }
 
 .edit-button {
@@ -126,4 +126,24 @@ input {
 
 .App-body{
   text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.nav-link {
+  color: black;   
+  background-color: rgba(195, 187, 195, 0.721);         
+  text-decoration: none;   
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 18px;
+  transition: color 0.3s;   
+}
+
+.nav-link:hover {
+  color: #c7a036;            
 }
