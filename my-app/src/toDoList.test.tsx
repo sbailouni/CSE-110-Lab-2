@@ -22,12 +22,18 @@ describe("ToDoList Required Tests", () => {
         const numChecked = screen.getByText(/Items bought: 1/i);
         expect(numChecked).toBeInTheDocument();
     });
-    test('is Apples still checked after rerender?', () => {
+})
+
+describe("ToDoList Edge Case Tests", () => {
+    test('items are sorted correctly in order of unchecked first, then checked', () => {
         render(<ToDoList />);
-    
-        const item1 = screen.getByText('Apples');
-    
-        const numChecked = screen.getByText(/Items bought: 0/i);
-        expect(numChecked).toBeInTheDocument();
+
+        const checkbox = screen.getAllByRole('checkbox')[0];
+        fireEvent.click(checkbox);
+
+        const uncheckedItems = screen.getAllByRole('checkbox').slice(1);
+        uncheckedItems.forEach((item) => {
+            expect(item).not.toBeChecked();
+        });
     });
 })

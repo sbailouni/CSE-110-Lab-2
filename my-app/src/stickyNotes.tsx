@@ -75,7 +75,7 @@ export const StickyNotes = () => {
                 setCreateNote({...createNote, title: event.target.value})
                 }required></input>
             </div>
-            <div><textarea placeholder="Note Content" value={createNote.content}
+            <div><textarea data-testid="note-content-input" placeholder="Note Content" value={createNote.content}
                 onChange={(event) =>
                 setCreateNote({...createNote, content: event.target.value})}
                 required></textarea>
@@ -90,27 +90,30 @@ export const StickyNotes = () => {
                 <option value={Label.other}>Other</option>
                 </select>
             </div>
-            <div><button type="submit">
+            <div><button data-testid="submit-update" type="submit">
                 {selectedNote.id === -1 ? 'Create Note' : 'Update Note'}
             </button></div>
             </form>
-    
+            
+            {notes.length === 0 ? (
+                <p>No sticky notes to display.</p>
+            ) : (
             <div className="notes-grid">
-            {notes.map((note) => (
-                <div key={note.id} className="note-item" style= {{ background: currentTheme.background, color: currentTheme.foreground}}>
-                <div className="notes-header">
-                    <button onClick={() => toggleFavorite(note.title)}>
-                    {favorites.includes(note.title) ? '❤️' : '♡'}
-                    </button>
-                    <button onClick={() => deleteNoteHandler(note.id)}>x</button>
-                </div>
-                <h2>{note.title}</h2>
-                <p>{note.content}</p>
-                <p>{note.label}</p>
-                <div><button className="edit-button" onClick={() => editNoteHandler(note)}>Edit</button> {/* Edit button */}</div>
-                </div>
-            ))}
-            </div>
+                {notes.map((note) => (
+                    <div key={note.id} className="note-item" style= {{ background: currentTheme.background, color: currentTheme.foreground}}>
+                    <div className="notes-header">
+                        <button onClick={() => toggleFavorite(note.title)}>
+                            {favorites.includes(note.title) ? '❤️' : '♡'}
+                        </button>
+                        <button onClick={() => deleteNoteHandler(note.id)}>x</button>
+                    </div>
+                    <h2>{note.title}</h2>
+                    <p data-testid={`note-content-display-${note.id}`}>{note.content}</p>
+                    <p>{note.label}</p>
+                    <div><button className="edit-button" onClick={() => editNoteHandler(note)}>Edit</button> {/* Edit button */}</div>
+                    </div>
+                ))}
+            </div>)}
             <div>
             <button className="toggle-button" onClick={toggleTheme}>Toggle Theme</button>
             </div>

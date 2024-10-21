@@ -57,14 +57,14 @@ describe("StickyNote Required Tests", () => {
         const editButton = screen.getAllByText('Edit')[0];
         fireEvent.click(editButton);
       
-        const noteContentInput = screen.getByPlaceholderText('Note Content');
+        const noteContentInput = screen.getByTestId('note-content-input');
         fireEvent.change(noteContentInput, { target: { value: 'Updated note content' } });
       
-        const submitButton = screen.getByText('Update Note');
+        const submitButton = screen.getByTestId('submit-update');
         fireEvent.click(submitButton);
-      
-        const updatedNoteContent = screen.getByText('Updated note content');
-        expect(updatedNoteContent).toBeInTheDocument();
+
+        const updatedNoteContent = screen.getByTestId('note-content-display-1');
+        expect(updatedNoteContent.innerHTML).toBe('Updated note content');
     });
 
     test('removes a note from the page when deleted', () => {
@@ -90,4 +90,14 @@ describe("StickyNote Edge Case Tests", () => {
         expect(screen.getByText('Test Note')).toBeInTheDocument();
         expect(screen.getByText('This is a test note.')).toBeInTheDocument();
     });
+    
+    test('delete all notes and check for 0 notes', () => {
+        render(<StickyNotes />);
+    
+        const deleteButtons = screen.getAllByText('x');
+        deleteButtons.forEach(button => fireEvent.click(button));
+    
+        expect(screen.getByText('No sticky notes to display.')).toBeInTheDocument();
+    });
+
 })
